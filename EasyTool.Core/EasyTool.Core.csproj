@@ -5,7 +5,7 @@
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Core", ""))</RootNamespace>
 
 	  <Authors>一个大西瓜,TimChen</Authors>
-	  <Version>2023.0905.1</Version>
+	  <Version>2023.0905.2</Version>
 	  <Description>A open source C# tool to make .NET easy
 	  </Description>
 	  <PackageTags>Tool Power</PackageTags>
