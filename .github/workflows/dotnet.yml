@@ -1,0 +1,42 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: NuGet Publisher
+      # You may pin to the exact commit or the version.
+      # uses: Jacup/publish-nuget@0d7b0c6f119fadaf9c3e2bcfcbb3bf3a1c439864
+      uses: Jacup/publish-nuget@v2.6.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: EasyTool.Core/EasyTool.Core.csproj
+        # Regex pattern to extract version info in a capturing group
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+   
+        # API key to authenticate with NuGet server
+        NUGET_KEY: oy2cgnffdhdznba6cbvqcb5jw7zhbevutbwzpbvwc2ohly
+        # NuGet server uri hosting the packages, defaults to https://api.nuget.org
+        NUGET_SOURCE: https://api.nuget.org
