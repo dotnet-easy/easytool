@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Core", ""))</RootNamespace>
+
+	  <Authors>一个大西瓜,TimChen</Authors>
+	  <VersionPrefix>2023.0905.1</VersionPrefix>
+	  <Description>A open source C# tool to make .NET easy
+	  </Description>
+	  <PackageTags>Tool Power</PackageTags>
+	  <RepositoryUrl>https://github.com/786744873/easytool</RepositoryUrl>
+	  <PackageProjectUrl>https://easy-dotnet.com</PackageProjectUrl>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +20,13 @@
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 	
 
