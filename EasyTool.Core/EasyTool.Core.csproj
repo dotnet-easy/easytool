@@ -11,7 +11,25 @@
 	  <PackageTags>Tool Power</PackageTags>
 	  <RepositoryUrl>https://github.com/786744873/easytool</RepositoryUrl>
 	  <PackageProjectUrl>https://easy-dotnet.com</PackageProjectUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
