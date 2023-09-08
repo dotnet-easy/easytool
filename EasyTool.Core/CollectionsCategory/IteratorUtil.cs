@@ -5,6 +5,7 @@ using System.Text;
 
 namespace EasyTool
 {
+    //TODO:疑问，这些功能Linq支持吗？
     /// <summary>
     /// 迭代器工具类
     /// </summary>
