@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyTool
+namespace EasyTool.Extension
 {
-    public static class DictionaryUtil
+    public static class DictionaryExtension
     {
         /// <summary>
         /// 获取字典中指定键的值，如果字典中不存在该键，则返回默认值
