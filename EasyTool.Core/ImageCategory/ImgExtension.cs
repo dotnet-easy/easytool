@@ -5,7 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 
-namespace EasyTool.ImageCategory
+namespace EasyTool.Extension
 {
     public static class ImgExtension
     {

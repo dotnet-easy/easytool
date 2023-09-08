@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace EasyTool.IOCategory
+namespace EasyTool.Extension
 {
     public static class FileTypeExtension
     {
