@@ -104,7 +104,7 @@ namespace EasyTool
         /// <returns>两个数字的商</returns>
         public static decimal Div(float a, float b, int decimalPlaces)
         {
-            decimal result = Div(a,b);
+            decimal result = Div(a, b);
             return decimal.Round(result, decimalPlaces);
         }
 
