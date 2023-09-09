@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -991,21 +990,25 @@ namespace EasyTool
             return dictionary;
         }
 
+#if NET6_0_OR_GREATER
+
         /// <summary>
         /// 将对象序列化为 JSON 字符串
         /// </summary>
         public static string SerializeToJson(object obj)
         {
-            return JsonConvert.SerializeObject(obj);
+            return System.Text.Json.JsonSerializer.Serialize(obj);
         }
 
         /// <summary>
         /// 将 JSON 字符串反序列化为指定类型的对象
         /// </summary>
-        public static object DeserializeFromJson(string json, Type type)
+        public static T? DeserializeFromJson<T>(string json)
         {
-            return JsonConvert.DeserializeObject(json, type);
+            return System.Text.Json.JsonSerializer.Deserialize<T>(json);
         }
+
+#endif
 
         /// <summary>
         /// 将对象序列化为 XML 字符串
