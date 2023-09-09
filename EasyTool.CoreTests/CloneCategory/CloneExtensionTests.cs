@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EasyTool.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EasyTool.Extension;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyTool.Extension.Tests
+namespace EasyTool.Tests
 {
     [TestClass()]
     public class CloneExtensionTests
