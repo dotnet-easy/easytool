@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace EasyTool
 {
+    /*
+     * 标准化接口返回结构，减少前后端对接工作
+     */
+
+    /// <summary>
+    /// 标准化接口反馈对象，便于与前端对接
+    /// </summary>
     public record Result
     {
         public string? Message { get; set; } = null;
@@ -41,6 +48,9 @@ namespace EasyTool
         public static Result Fail(string message) => new Result(message, false);
     }
 
+    /// <summary>
+    /// 标准化接口反馈对象，便于与前端对接
+    /// </summary>
     public record Result<T> : Result
     {
         public T? Data { get; set; }
@@ -66,6 +76,9 @@ namespace EasyTool
 
     }
 
+    /// <summary>
+    /// 标准化接口反馈对象，便于与前端对接
+    /// </summary>
     public record ResultSet<T> : Result<List<T>>
     {
         /// <summary>
