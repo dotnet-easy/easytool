@@ -189,7 +189,7 @@ namespace EasyTool
         /// <param name="type">要创建实例的类</param>
         /// <param name="constructorArguments">要传递给构造函数的参数</param>
         /// <returns>类的新实例</returns>
-        public static object CreateInstance(Type type, object[] constructorArguments)
+        public static object CreateInstance(Type type, params object[] constructorArguments)
         {
             ConstructorInfo constructor = type.GetConstructor(GetParameterTypes(constructorArguments));
             return constructor.Invoke(constructorArguments);
