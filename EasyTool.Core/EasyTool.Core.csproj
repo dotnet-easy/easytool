@@ -6,19 +6,17 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Core", ""))</RootNamespace>
 
-		<Authors>一个大西瓜,TimChen</Authors>
-		<Version>2023.0905.2</Version>
-		<Description>
-			A open source C# tool to make .NET easy
-		</Description>
-		<PackageTags>Tool Power</PackageTags>
-		<RepositoryUrl>https://github.com/786744873/easytool</RepositoryUrl>
-		<PackageProjectUrl>https://easy-dotnet.com</PackageProjectUrl>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageIcon>logo.png</PackageIcon>
-
-	</PropertyGroup>
+	  <Authors>一个大西瓜,TimChen</Authors>
+	  <Version>2023.0908.1</Version>
+	  <Description>A open source C# tool to make .NET easy
+	  </Description>
+	  <PackageTags>Tool Power</PackageTags>
+	  <RepositoryUrl>https://github.com/786744873/easytool</RepositoryUrl>
+	  <PackageProjectUrl>https://easy-dotnet.com</PackageProjectUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
 
 	<ItemGroup>
 		<None Include="..\LICENSE">
