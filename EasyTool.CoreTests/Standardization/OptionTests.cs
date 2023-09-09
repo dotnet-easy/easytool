@@ -10,7 +10,7 @@ using System.ComponentModel;
 namespace EasyTool.Tests
 {
     [TestClass()]
-    public class OptionExtensionTests
+    public class OptionTests
     {
         [TestMethod()]
         public void ToOptionsTest()
