@@ -1,26 +1,105 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
 namespace EasyTool
 {
     /// <summary>
+    /// uuid生成风格
+    /// </summary>
+    public enum UUIDStyle
+    {
+        /// <summary>
+        /// guid
+        /// </summary>
+        GUID,
+        /// <summary>
+        /// mssql顺序guid
+        /// </summary>
+        SequentialGUID,
+        /// <summary>
+        /// 顺序
+        /// </summary>
+        Sequence,
+    }
+    /// <summary>
     /// 唯一ID工具
     /// </summary>
     public class IdUtil
     {
-        private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static readonly DateTime epoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private static int objectIdCounter = 0;
 
+        private static long _counter = DateTime.Now.Ticks;
         /// <summary>
         /// 生成UUID
         /// </summary>
         /// <returns>生成的UUID</returns>
-        public static string UUID()
+        public static Guid UUID(UUIDStyle style = UUIDStyle.GUID)
         {
-            return Guid.NewGuid().ToString();
+            switch (style)
+            {
+                case UUIDStyle.GUID: return Guid.NewGuid();
+                case UUIDStyle.SequentialGUID:
+                    {
+                        Span<byte> guidBytes = stackalloc byte[16];
+                        var succeeded = Guid.NewGuid().TryWriteBytes(guidBytes);
+                        var incrementedCounter = Interlocked.Increment(ref _counter);
+                        Span<byte> counterBytes = stackalloc byte[sizeof(long)];
+                        MemoryMarshal.Write(counterBytes, ref incrementedCounter);
+
+                        if (!BitConverter.IsLittleEndian)
+                        {
+                            counterBytes.Reverse();
+                        }
+
+                        guidBytes[08] = counterBytes[1];
+                        guidBytes[09] = counterBytes[0];
+                        guidBytes[10] = counterBytes[7];
+                        guidBytes[11] = counterBytes[6];
+                        guidBytes[12] = counterBytes[5];
+                        guidBytes[13] = counterBytes[4];
+                        guidBytes[14] = counterBytes[3];
+                        guidBytes[15] = counterBytes[2];
+
+                        return new Guid(guidBytes);
+                    }
+                case UUIDStyle.Sequence:
+                    {
+                        Span<byte> guidBytes = stackalloc byte[16];
+                        var succeeded = Guid.NewGuid().TryWriteBytes(guidBytes);
+                        var incrementedCounter = Interlocked.Increment(ref _counter);
+                        Span<byte> counterBytes = stackalloc byte[sizeof(long)];
+                        MemoryMarshal.Write(counterBytes, ref incrementedCounter);
+
+                        if (!BitConverter.IsLittleEndian)
+                        {
+                            counterBytes.Reverse();
+                        }
+
+                        guidBytes[0] = counterBytes[4];
+                        guidBytes[1] = counterBytes[5];
+                        guidBytes[2] = counterBytes[6];
+                        guidBytes[3] = counterBytes[7];
+                        guidBytes[4] = counterBytes[2];
+                        guidBytes[5] = counterBytes[3];
+                        guidBytes[6] = counterBytes[0];
+                        guidBytes[7] = counterBytes[1];
+
+                        return new Guid(guidBytes);
+                    }
+                default:
+                    throw new ArgumentException("不支持的UUIDStyle");
+            }
         }
+        /// <summary>
+        /// 生成UUID
+        /// </summary>
+        /// <returns>生成的UUID</returns>
+        public static string UUIDString(UUIDStyle style = UUIDStyle.GUID)
+            => UUID(style).ToString();
 
         /// <summary>
         /// 生成MongoDB ObjectId
