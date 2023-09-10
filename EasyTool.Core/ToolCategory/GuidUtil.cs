@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -61,7 +62,27 @@ namespace EasyTool
         /// </summary>
         public static string NextUUID()
         {
-            return new string(NextGuid().ToString("N").Reverse().ToArray());
+            Span<byte> guidBytes = stackalloc byte[16];
+            var succeeded = Guid.NewGuid().TryWriteBytes(guidBytes);
+            var incrementedCounter = Interlocked.Increment(ref _counter);
+            Span<byte> counterBytes = stackalloc byte[sizeof(long)];
+            MemoryMarshal.Write(counterBytes, ref incrementedCounter);
+
+            if (!BitConverter.IsLittleEndian)
+            {
+                counterBytes.Reverse();
+            }
+
+            guidBytes[07] = counterBytes[1];
+            guidBytes[06] = counterBytes[0];
+            guidBytes[05] = counterBytes[7];
+            guidBytes[04] = counterBytes[6];
+            guidBytes[03] = counterBytes[5];
+            guidBytes[02] = counterBytes[4];
+            guidBytes[01] = counterBytes[3];
+            guidBytes[00] = counterBytes[2];
+
+            return new Guid(guidBytes).ToString("N");
         }
     }
 }
