@@ -58,7 +58,7 @@ namespace EasyTool
         /// </summary>
         public static string NextUUID()
         {
-            return NextGuid().ToString("N");
+            return new string(NextGuid().ToString("N").Reverse().ToArray());
         }
     }
 }
