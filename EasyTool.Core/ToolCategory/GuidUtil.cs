@@ -10,6 +10,8 @@ namespace EasyTool
 {
     public class GuidUtil
     {
+        static long _counter = DateTime.UtcNow.Ticks;
+
         public static Guid NewGuid()
         {
             return Guid.NewGuid();
@@ -20,7 +22,6 @@ namespace EasyTool
         /// </summary>
         public static Guid NextGuid()
         {
-            long _counter = DateTime.UtcNow.Ticks;
             Span<byte> guidBytes = stackalloc byte[16];
             var succeeded = Guid.NewGuid().TryWriteBytes(guidBytes);
             var incrementedCounter = Interlocked.Increment(ref _counter);

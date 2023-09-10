@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace EasyTool.Tests
 {
@@ -17,6 +18,7 @@ namespace EasyTool.Tests
             Guid guid1 = GuidUtil.NextGuid();
             Thread.Sleep(10);
             Guid guid2 = GuidUtil.NextGuid();
+
             Assert.IsTrue(true);
         }
 
