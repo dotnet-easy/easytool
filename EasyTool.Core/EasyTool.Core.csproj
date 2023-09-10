@@ -39,6 +39,7 @@
 		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="7.0.1" Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'"/>
 	</ItemGroup>
 
 	<ItemGroup>
