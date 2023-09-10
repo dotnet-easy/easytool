@@ -91,6 +91,7 @@ namespace EasyTool
 
         // Send an HTTP GET request and return the response
         // 发送HTTP GET请求并返回响应
+        [Obsolete("建议使用HttpClient替代此方法")]
         public static string HttpGet(string url)
         {
             try
@@ -106,6 +107,7 @@ namespace EasyTool
 
         // Send an HTTP POST request and return the response
         // 发送HTTP POST请求并返回响应
+        [Obsolete("建议使用HttpClient替代此方法")]
         public static string HttpPost(string url, string data)
         {
             try
