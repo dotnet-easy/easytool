@@ -12,6 +12,9 @@ namespace EasyTool
     {
         static long _counter = DateTime.UtcNow.Ticks;
 
+        /// <summary>
+        /// 获取一个新的的GUID值
+        /// </summary>
         public static Guid NewGuid()
         {
             return Guid.NewGuid();
@@ -46,7 +49,7 @@ namespace EasyTool
         }
 
         /// <summary>
-        /// 获取一个顺序的GUID值
+        /// 获取一个新的的UUID值
         /// </summary>
         public static string NewUUID()
         {
@@ -54,7 +57,7 @@ namespace EasyTool
         }
 
         /// <summary>
-        /// 获取一个顺序的GUID值
+        /// 获取一个顺序的UUID值
         /// </summary>
         public static string NextUUID()
         {
