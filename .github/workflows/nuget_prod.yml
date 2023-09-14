@@ -3,6 +3,10 @@
 
 name: nuget_prod
 
+on:
+  release:
+    types: [published]
+
 jobs:
   build:
 
