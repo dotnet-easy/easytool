@@ -1,7 +1,11 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
+
 name: nuget_publisher
+
+env:
+  Version: 2023.0914.1
 
 on:
   push:
@@ -24,17 +28,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: NuGet Publisher
-      # You may pin to the exact commit or the version.
-      # uses: Jacup/publish-nuget@0d7b0c6f119fadaf9c3e2bcfcbb3bf3a1c439864
-      uses: Jacup/publish-nuget@v2.6.0
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: EasyTool.Core/EasyTool.Core.csproj
-        # Regex pattern to extract version info in a capturing group
-        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-   
-        # API key to authenticate with NuGet server
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        # NuGet server uri hosting the packages, defaults to https://api.nuget.org
-        NUGET_SOURCE: https://api.nuget.org
+    - name: Package Nuget 📦
+      run: |
+        dotnet build -c Release "EasyTool.Core/EasyTool.Core.csproj"
+        SUFFIX=`date "+%y%m%d%H%M%S"`
+        dotnet pack "EasyTool.Core/EasyTool.Core.csproj" /p:PackageVersion=$Version-pre-${SUFFIX} -c Release -o publish --no-build --no-restore
+    - name: Publish to Nuget ✔
+      run: |
+        dotnet nuget push publish/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
