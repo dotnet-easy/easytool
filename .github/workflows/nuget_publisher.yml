@@ -6,7 +6,6 @@ name: nuget_publisher
 
 env:
   Version: 2023.0914.1
-  NUGET_API_KEY: ${{secrets.NUGET_API_KEY}}
 
 on:
   push:
@@ -36,4 +35,4 @@ jobs:
         dotnet pack "EasyTool.Core/EasyTool.Core.csproj" /p:PackageVersion=$Version-pre-${SUFFIX} -c Release -o publish --no-build --no-restore
     - name: Publish to Nuget ✔
       run: |
-        dotnet nuget push publish/*.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_API_KEY --skip-duplicate
+        dotnet nuget push publish/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
