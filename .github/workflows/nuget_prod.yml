@@ -1,16 +1,8 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
+name: nuget_prod
 
-name: nuget_publisher
-
-env:
-  Version: 2023.0914.1
-
-on:
-  push:
-    branches: [ main ]
-    
 jobs:
   build:
 
@@ -32,7 +24,7 @@ jobs:
       run: |
         dotnet build -c Release "EasyTool.Core/EasyTool.Core.csproj"
         SUFFIX=`date "+%y%m%d%H%M%S"`
-        dotnet pack "EasyTool.Core/EasyTool.Core.csproj" /p:PackageVersion=$Version-pre-${SUFFIX} -c Release -o publish --no-build --no-restore
+        dotnet pack "EasyTool.Core/EasyTool.Core.csproj" /p:PackageVersion=${{VERSION}} -c Release -o publish --no-build --no-restore
     - name: Publish to Nuget ✔
       run: |
         dotnet nuget push publish/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
