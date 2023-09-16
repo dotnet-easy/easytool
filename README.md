@@ -3,8 +3,9 @@ An open source C# tool to make .NET easy
 
 for more information：https://easy-dotnet.com/pages/easytool/
 
-[![pull_request](https://github.com/786744873/easytool/actions/workflows/pull_request.yml/badge.svg)](https://github.com/786744873/easytool/actions/workflows/pull_request.yml)
-[![nuget_publisher](https://github.com/786744873/easytool/actions/workflows/nuget_publisher.yml/badge.svg?branch=main)](https://github.com/786744873/easytool/actions/workflows/nuget_publisher.yml)
+| Build | NuGet |
+|--|--|
+|[![pull_request](https://github.com/786744873/easytool/actions/workflows/pull_request.yml/badge.svg)](https://github.com/786744873/easytool/actions/workflows/pull_request.yml)|[![](https://img.shields.io/nuget/v/EasyTool.Core.svg)](https://www.nuget.org/packages/EasyTool.Core)|
 
 ## Api Doc
 
