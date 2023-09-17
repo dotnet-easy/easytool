@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace EasyTool.Development
+namespace EasyTool.Web.Development
 {
     public static class BuildWebApiToTS
     {
@@ -54,7 +54,7 @@ namespace EasyTool.Development
                         var urlpars = action.ApiComments.ParamNames.Select(x => $"{x}=${{{x}}}").Aggregate((a, b) => a + "&" + b);
 
                         code.AppendLine($@"    {action.Name}Url({pars}): string {{ return `${{environment.host}}/{prefix}{coll.Name}/{action.Name}?{urlpars}`; }},");
-
+                        
                     }
                 }
                 code.AppendLine($"  }},");

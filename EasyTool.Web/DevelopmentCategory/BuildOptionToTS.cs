@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace EasyTool.Development
+namespace EasyTool.Web.Development
 {
     public class BuildOptionToTS
     {

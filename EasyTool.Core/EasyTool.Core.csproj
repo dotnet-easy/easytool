@@ -35,13 +35,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 		<PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
 		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
-		<PackageReference Include="System.Net.Http.Json" Version="7.0.1" Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'"/>
+		<PackageReference Include="System.Net.Http.Json" Version="7.0.1" Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'" />
 	</ItemGroup>
 
 	<ItemGroup>
