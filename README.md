@@ -8,53 +8,48 @@ An open source C# tool to make .NET easy.
 [![pull_request](https://github.com/786744873/easytool/actions/workflows/pull_request.yml/badge.svg)](https://github.com/786744873/easytool/actions/workflows/pull_request.yml)
 [![](https://img.shields.io/nuget/v/EasyTool.Core.svg)](https://www.nuget.org/packages/EasyTool.Core)
 <p>
-    <span>English</span> |  <a href="README.zh-CN.md">中文</a>
+    <span>中文</span> |  <a href="README.EN-US.md.md">English</a>
 </p>
 </div>
 
-## 📚 Introduce
+## 📚 简介
 
-EasyTool is a .NET tool to make .Net easy. It provides a large number of help classes to help developers complete various development tasks. It covers a series of operations such as string, number, collection, encoding, date, file, IO, encryption, database, JSON, HTTP client, etc. 
+Easytool 是一个功能丰富且易用的 .NET 工具库，旨在帮助开发者快速、便捷地完成各类开发任务。 这些封装的工具涵盖了字符串、数字、集合、编码、日期、文件、IO、加密、JSON、HTTP客户端等一系列操作， 可以满足各种不同的开发需求。
 > [More information](https://easy-dotnet.com/pages/easytool/)
 > 
-## 🚀 Get started
-### install
-Install EasyTool.Core from the package manager console:
+## 🚀 快速开始
+### 安装 
 ~~~
 PM> Install-Package EasyTool.Core
 ~~~
-Or from the .NET CLI as:
+或者 .NET CLI 👇
 ~~~
 dotnet add package EasyTool.Core
 ~~~
 
-### use
-Copy file or directory
+### 使用
+复制文件或者目录
 ~~~csharp
 FileUtil.Copy(sourceDir, destinationDir, isOverwrite)
 ~~~
-Clone an object
+克隆对象
 ~~~csharp
 var a = CloneUtil.Clone<Person>(person);
 ~~~
 
 
-## 🛠️ Catalog
-Easytool provides some of the most commonly used experiences and methods in the development process
+## 🛠️ 目录
+Easytool 封装了开发过程中一些常用的方法
 
 | Catalog                                           |     Introduce                                                                        |
 | --------------------------------------------------|---------------------------------------------------------------------------------- |
-| [clone](EasyTool.Core/CloneCategory/)             |     clone an object                                             |
-| [code](EasyTool.Core/CodeCategory/)               |     base32, base62, etc                                             |
-| [collection](EasyTool.Core/CollectionsCategory/)  |                dictionary,List,LinkList, etc                                                      |
-| [converter](EasyTool.Core/ConvertCategory/)       |             convert data type                                     |
-| [datetime](EasyTool.Core/DateTimeCategory/)       |     timerutil,timestamp,etc                                       |
+| [clone](EasyTool.Core/CloneCategory/)             |     使用 CloneUtil.Clone 方法实现 .NET 对象的深度复制                                       |
+| [code](EasyTool.Core/CodeCategory/)               |     提供基于 base32, base62 等编解码工具                                             |
 
-## .NET Runtime Reference
+## 代码共享
 
-// TODO
 
-## Exchange community
+## 社区交流
 
 **微信：ygdxg8657 （备注进群） QQ群：543829648  903210423（已满）** 
 
