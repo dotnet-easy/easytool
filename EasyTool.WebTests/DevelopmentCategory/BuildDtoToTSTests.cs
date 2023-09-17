@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EasyTool.Development;
+using EasyTool.Web.Development;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyTool.Tests
+namespace EasyTool.WebTests
 {
     [TestClass()]
     public class BuildDtoToTSTests

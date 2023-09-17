@@ -112,10 +112,12 @@ export enum WorkRecord_EOperatingEnum {
                 var propertyTypes = dtoCommentType.GetProperties();
                 foreach (var propertyType in propertyTypes)
                 {
-                    var property = new OptionProperty();
-                    property.Text = propertyType.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyType.Name;
-                    property.Value = propertyType.GetValue(null, null)?.ToString() ?? propertyType.Name;
-                    property.Type = propertyType.PropertyType;
+                    var property = new OptionProperty
+                    {
+                        Text = propertyType.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyType.Name,
+                        Value = propertyType.GetValue(null, null)?.ToString() ?? propertyType.Name,
+                        Type = propertyType.PropertyType
+                    };
                     dto.Propertys.Add(property);
                 }
 
@@ -128,7 +130,7 @@ export enum WorkRecord_EOperatingEnum {
 
         #endregion
 
-        public record OptionClass
+        public class OptionClass
         {
             public OptionClass(string name, string _namespace)
             {
@@ -146,13 +148,13 @@ export enum WorkRecord_EOperatingEnum {
         }
 
 
-        public record OptionProperty()
+        public class OptionProperty
         {
-            public string Text { get; set; }//显示的文本
+            public string Text { get; set; } = string.Empty;
 
-            public string Value { get; set; }//值
+            public string Value { get; set; } = string.Empty;
 
-            public Type Type { get; set; }//值
+            public Type Type { get; set; } = default!;
         }
 
     }
