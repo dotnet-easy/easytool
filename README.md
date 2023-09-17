@@ -2,13 +2,13 @@
 
 <div align="center">
 
-An open source C# tool to make .NET easy. 
+一个开源的 .NET 工具库, 使得开发变得更加有效率
 
 
 [![pull_request](https://github.com/786744873/easytool/actions/workflows/pull_request.yml/badge.svg)](https://github.com/786744873/easytool/actions/workflows/pull_request.yml)
 [![](https://img.shields.io/nuget/v/EasyTool.Core.svg)](https://www.nuget.org/packages/EasyTool.Core)
 <p>
-    <span>中文</span> |  <a href="README.EN-US.md.md">English</a>
+    <span>中文</span> |  <a href="README.EN-US.md">English</a>
 </p>
 </div>
 
