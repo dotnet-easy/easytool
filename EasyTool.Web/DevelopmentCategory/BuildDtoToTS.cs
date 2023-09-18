@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
-namespace EasyTool.Development
+namespace EasyTool.Web.Development
 {
     public class BuildDtoToTS
     {

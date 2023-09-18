@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EasyTool.Development;
+using EasyTool.Web.Development;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace EasyTool.Tests
+namespace EasyTool.WebTests
 {
     [TestClass()]
     public class BuildOptionToTSTests
@@ -23,7 +23,7 @@ namespace EasyTool.Tests
     }
 
     [OptionComments("C#编译TS示例Option")]
-    public class BuildOptionTest : IOption
+    public class BuildOptionTest
     {
         [DisplayName("调试")]
         public static string Debug { get; set; } = nameof(Debug);
