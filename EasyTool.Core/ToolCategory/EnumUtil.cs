@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -233,34 +234,6 @@ namespace EasyTool
             }
 
             return GetDisplayName(GetValueByName<TEnum>(name));
-        }
-    }
-
-    /// <summary>
-    /// 枚举成员的Description特性类，用于设置成员的注释
-    /// </summary>
-    [AttributeUsage(AttributeTargets.Field)]
-    public class DescriptionAttribute : Attribute
-    {
-        public string Description { get; set; }
-
-        public DescriptionAttribute(string description)
-        {
-            Description = description;
-        }
-    }
-
-    /// <summary>
-    /// 枚举成员的Display特性类，用于设置成员的Display名称
-    /// </summary>
-    [AttributeUsage(AttributeTargets.Field)]
-    public class DisplayAttribute : Attribute
-    {
-        public string Name { get; set; }
-
-        public DisplayAttribute(string name)
-        {
-            Name = name;
         }
     }
 }
