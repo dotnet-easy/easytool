@@ -12,10 +12,10 @@ namespace EasyTool.CodeCategory.Tests
     public class DesUtilTests
     {
         [TestMethod()]
-        public void EncryptTest()
+        public void EncryptSecret8Test()
         {
             var input = "abbfly";
-            var sk = "fj2#)ks!";
+            var sk = "12345678";
             var en = DesUtil.Encrypt(input, sk);
             var de = DesUtil.Decrypt(en, sk);
             Assert.IsTrue(de == input);

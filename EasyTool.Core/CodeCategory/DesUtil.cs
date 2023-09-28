@@ -20,10 +20,10 @@ namespace EasyTool.CodeCategory
         /// <returns></returns>
         public static string Encrypt(string str, string sk, CipherMode cipher = CipherMode.ECB, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
         {
-            if (str == null) return "";
-            if (string.IsNullOrEmpty(sk)) throw new ArgumentNullException("请输入秘钥");
+            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (!IsLegalSize(sk)) throw new ArgumentException("不合规的秘钥，请确认秘钥为8位的字符");
             encoding ??= Encoding.UTF8;
-            byte[] keyBytes = encoding.GetBytes(str).Take(8).ToArray();
+            byte[] keyBytes = encoding.GetBytes(sk).ToArray();
             byte[] toEncrypt = encoding.GetBytes(str);
             var des = DES.Create();
             des.Mode = cipher;
@@ -47,10 +47,10 @@ namespace EasyTool.CodeCategory
         /// <returns></returns>
         public static string Decrypt(string str, string sk, CipherMode cipher = CipherMode.ECB, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
         {
-            if (str == null) return "";
-            if (string.IsNullOrEmpty(sk)) throw new ArgumentNullException("请输入秘钥");
+            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (!IsLegalSize(sk)) throw new ArgumentException("不合规的秘钥，请确认秘钥为8位的字符");
             encoding ??= Encoding.UTF8;
-            byte[] keyBytes = encoding.GetBytes(str).Take(8).ToArray();
+            byte[] keyBytes = encoding.GetBytes(sk).ToArray();
             byte[] toDecrypt = Convert.FromBase64String(str);
             var des = DES.Create();
             des.Mode = cipher;
@@ -60,6 +60,14 @@ namespace EasyTool.CodeCategory
             ICryptoTransform cTransform = des.CreateDecryptor();
             var resultArray = cTransform.TransformFinalBlock(toDecrypt, 0, toDecrypt.Length);
             return encoding.GetString(resultArray);
+        }
+
+        private static bool IsLegalSize(string sk)
+        {
+            if (!string.IsNullOrEmpty(sk) && sk.Length == 8)
+                return true;
+
+            return false;
         }
     }
 }

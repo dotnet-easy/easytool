@@ -12,10 +12,30 @@ namespace EasyTool.CodeCategory.Tests
     public class AesUtilTests
     {
         [TestMethod()]
-        public void EncryptTest()
+        public void EncryptSecret16Test()
         {
             var input = "abbfly";
-            var sk = "!@#sfj2#)ksk";
+            var sk = "1234567890123456";
+            var en = AesUtil.Encrypt(input, sk);
+            var de = AesUtil.Decrypt(en, sk);
+            Assert.IsTrue(de == input);
+        }
+
+        [TestMethod()]
+        public void EncryptSecret24Test()
+        {
+            var input = "abbfly";
+            var sk = "123456789012345678901234";
+            var en = AesUtil.Encrypt(input, sk);
+            var de = AesUtil.Decrypt(en, sk);
+            Assert.IsTrue(de == input);
+        }
+
+        [TestMethod()]
+        public void EncryptSecret32Test()
+        {
+            var input = "abbfly";
+            var sk = "12345678901234567890123456789012";
             var en = AesUtil.Encrypt(input, sk);
             var de = AesUtil.Decrypt(en, sk);
             Assert.IsTrue(de == input);
