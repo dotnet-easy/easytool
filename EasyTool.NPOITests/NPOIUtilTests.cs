@@ -55,6 +55,7 @@ public class NPOIUtilTests
         }
     }
     [TestMethod]
+<<<<<<< HEAD
     public void Test_ExportToExcel()
     {
         bool res = NPOIUtil.ExportToExcel(dataList, "D:\\", out string msg);
@@ -70,6 +71,8 @@ public class NPOIUtilTests
 
     }
     [TestMethod]
+=======
+>>>>>>> f55b561c4c86f7ff74b0740f770f6c5810f28ed8
     public void Test_OpenWorkbookFromPath()
     {
         var workbook = NPOIUtil.OpenWorkbook(path);
@@ -108,7 +111,25 @@ public class NPOIUtilTests
         Console.WriteLine(JsonSerializer.Serialize(dataList));
         Assert.IsNotNull(dataList);
     }
+<<<<<<< HEAD
 
+=======
+    [TestMethod]
+    public void Test_ExportToExcel()
+    {
+        bool res = NPOIUtil.ExportToExcel(dataList, "D:\\", out string msg);
+        bool res2 = NPOIUtil.ExportToExcel(dataList, "D:\\", out string msg2, ExcelWorkbookType.XLS);
+        Assert.IsTrue(res && res2);
+    }
+    [TestMethod]
+    public void Test_ExportToExcelFromDatatable()
+    {
+        bool res = NPOIUtil.ExportToExcel(dataTable, "D:\\", out string msg);
+        bool res2 = NPOIUtil.ExportToExcel(dataTable, "D:\\", out string msg2, ExcelWorkbookType.XLS);
+        Assert.IsTrue(res && res2);
+
+    }
+>>>>>>> f55b561c4c86f7ff74b0740f770f6c5810f28ed8
 }
 class TempClass
 {
