@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.1;.net6.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<LangVersion>11</LangVersion>
+		<Authors>Hang</Authors>
+		<Description>
+			依赖于NPOI 2.6.2
+			支持通过文件地址或者流的方式读取Excel文件获取工作簿对象IWorkbook,
+			通过IWorkbook工作簿对象可以转化成Dataset对象
+			通过ISheet工作表对象可以转化成DataTable对象和List对象
+			以下是一些示例:
+			获取数据集对象：
+			var dateSet = NPOIUtil.OpenWorkbook(path).ConvertToDataSet();
+			var dateSet = NPOIUtil.ConvertToDataSet(path);
+			获取工作表对象：
+			var sheet = NPOIUtil.OpenWorkbook(path).GetSheetAt(0);
+			获取单表数据对象：
+			var dataTable = NPOIUtil.OpenWorkbook(path).GetSheetAt(0).ConvertToDataTable();
+			List《T》 dataList = NPOIUtil.OpenWorkbook(path).GetSheetAt(0).ConvertToList《List《T》》();
+			从流读取工作簿对象(从流读取需要指定文件类型，缺省值为XLSX)：
+			var workbook = NPOIUtil.OpenWorkbook(stream,ExcelWorkbookType.XLS);
+		</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="NPOI" Version="2.6.2" />
+	</ItemGroup>
+
+</Project>
