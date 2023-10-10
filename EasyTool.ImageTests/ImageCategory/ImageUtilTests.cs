@@ -1,6 +1,5 @@
-﻿using System.Drawing;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Drawing;
 
 namespace EasyTool.CoreTests.ImageCategory
 {
@@ -14,8 +13,8 @@ namespace EasyTool.CoreTests.ImageCategory
         [TestMethod]
         public void MaskImageTest()
         {
-            Image ori = new Bitmap(@"C:\Desktop\ori.jpg");
-            Image mask = new Bitmap(@"C:\Desktop\mask.jpg");
+            Image ori = new Bitmap(Path.Combine(Environment.CurrentDirectory.Split("bin")[0], "ImageCategory","Resources","ori.jpg"));
+            Image mask = new Bitmap(Path.Combine(Environment.CurrentDirectory.Split("bin")[0], "ImageCategory", "Resources", "mask.jpg"));
 
             Console.WriteLine($"ori-width:{ori.Width} | ori-height:{ori.Height}");
             Console.WriteLine($"mask-width:{mask.Width} | mask-height:{mask.Height}");
@@ -23,7 +22,7 @@ namespace EasyTool.CoreTests.ImageCategory
             Image result = ImgUtil.MaskImage(mask, ori);
 
             Console.WriteLine($"result-width:{mask.Width} | result-height:{mask.Height}");
-            result.Save(@"C:\Desktop\result.jpg");
+            result.Save(Path.Combine(Environment.CurrentDirectory.Split("bin")[0], "ImageCategory", "Resources", "result.jpg"));
         }
 
         [TestMethod]
