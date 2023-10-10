@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
@@ -154,6 +155,43 @@ namespace EasyTool
             graphics.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), bmp.Width, 0, -bmp.Width, bmp.Height, GraphicsUnit.Pixel);
             graphics.Dispose();
             return bmp;
+        }
+
+        /// <summary>
+        /// 根据一张黑白的mask轮廓图片切割图像
+        /// </summary>
+        /// <param name="maskImage">mask图像</param>
+        /// <param name="originalImage">原始图像</param>
+        /// <returns>切割后的图像</returns>
+        public static Image MaskImage(Image maskImage, Image originalImage)
+        {
+            if (maskImage.Width != originalImage.Width || maskImage.Height != originalImage.Height) 
+                throw new ArgumentException("Mask image dimensions do not match original image dimensions.");
+
+            Bitmap maskBitmap = new Bitmap(maskImage);
+            Bitmap originalBitmap = new Bitmap(originalImage);
+
+            Bitmap croppedBitmap = new Bitmap(originalBitmap.Width, originalBitmap.Height, originalBitmap.PixelFormat);
+
+            for (int x = 0; x < originalBitmap.Width; x++)
+            {
+                for (int y = 0; y < originalBitmap.Height; y++)
+                {
+                    Color maskPixel = maskBitmap.GetPixel(x, y);
+
+                    if (maskPixel.R is 0)
+                    {
+                        croppedBitmap.SetPixel(x, y, Color.Transparent);
+                    }
+                    else
+                    {
+                        Color originalPixel = originalBitmap.GetPixel(x, y);
+                        croppedBitmap.SetPixel(x, y, originalPixel);
+                    }
+                }
+            }
+
+            return croppedBitmap;
         }
     }
 }
