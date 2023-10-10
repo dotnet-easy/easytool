@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyTool.EmitMapperTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyTool.Web", "EasyTool.Web\EasyTool.Web.csproj", "{578D6FC8-C937-4FAE-B776-9E52043BA8E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyTool.WebTests", "EasyTool.WebTests\EasyTool.WebTests.csproj", "{E033014B-67D0-4B42-8507-B90ACE0BD059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyTool.WebTests", "EasyTool.WebTests\EasyTool.WebTests.csproj", "{E033014B-67D0-4B42-8507-B90ACE0BD059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
