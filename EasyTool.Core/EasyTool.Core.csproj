@@ -12,7 +12,7 @@
 			A open source C# tool to make .NET easy
 		</Description>
 		<PackageTags>Tool Power</PackageTags>
-		<RepositoryUrl>https://github.com/786744873/easytool</RepositoryUrl>
+		<RepositoryUrl>https://github.com/dotnet-easy/easytool</RepositoryUrl>
 		<PackageProjectUrl>https://easy-dotnet.com</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -35,11 +35,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
-		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
-		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
-		<PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
-		<PackageReference Include="System.Net.Http.Json" Version="7.0.1" Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+		<PackageReference Include="System.ComponentModel.Composition" Version="8.0.0-rc.1.23419.4" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0-rc.1.23419.4" />
+		<PackageReference Include="System.Net.Http.Json" Version="8.0.0-rc.1.23419.4" Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'" />
 	</ItemGroup>
 
 	<ItemGroup>
