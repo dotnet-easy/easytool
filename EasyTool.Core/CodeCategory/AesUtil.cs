@@ -91,7 +91,7 @@ namespace EasyTool.CodeCategory
         /// <param name="text">需要加密的值</param>
         /// <param name="key">加密key</param>
         /// <param name="iv">向量iv</param>
-        /// <param name="cipher">默认CSC</param>
+        /// <param name="cipher">默认CBC</param>
         /// <param name="padding">默认PKCS7</param>
         /// <param name="encoding">默认UTF8</param>
         /// <returns>加密后的结果</returns>
@@ -131,21 +131,21 @@ namespace EasyTool.CodeCategory
         /// <param name="text">需要解密的值</param>
         /// <param name="key">解密key</param>
         /// <param name="iv">向量iv</param>
-        /// <param name="cipher">默认CSC</param>
+        /// <param name="cipher">默认CBC</param>
         /// <param name="padding">默认PKCS7</param>
         /// <param name="encoding">默认UTF8</param>
         /// <returns>解密后的结果</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static string Decrypt(string encryptText, string key, string iv, CipherMode cipher = CipherMode.ECB, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
+        public static string Decrypt(string text, string key, string iv, CipherMode cipher = CipherMode.CBC, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
         {
-            if (string.IsNullOrWhiteSpace(encryptText))
+            if (string.IsNullOrWhiteSpace(text))
                 return string.Empty; ;
             if (!KeyIsLegalSize(key))
                 throw new ArgumentException("不合规的秘钥，请确认秘钥为16 、24、 32位的字符");
             if (!IvIsLegalSize(iv))
                 throw new ArgumentException("不合规的iv，请确认iv为16位的字符");
             encoding ??= Encoding.UTF8;
-            var cipherTextBytes = Convert.FromBase64String(encryptText);
+            var cipherTextBytes = Convert.FromBase64String(text);
             var keyBytes = encoding.GetBytes(key);
             var ivBytes = encoding.GetBytes(iv);
             using var symmetricKey = Aes.Create();
