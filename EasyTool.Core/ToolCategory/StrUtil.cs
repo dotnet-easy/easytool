@@ -110,7 +110,7 @@ namespace EasyTool
         }
 
         /// <summary>
-        /// 字符串转换日期(年月日)，转换失败返回DateTime.MinValue
+        /// 字符串转换日期(年月日)，转换失败返回值返回false，输出参数返回DateTime.MinValue
         /// </summary>
         /// <param name="str">需要转换的字符串</param>
         /// <param name="dt">转换后结果</param>
@@ -135,7 +135,7 @@ namespace EasyTool
         }
 
         /// <summary>
-        /// 验证是否为时间(年月日 时分秒)，转换失败返回DateTime.MinValue
+        /// 字符串转换(年月日 时分秒)，转换失败返回值返回false，输出参数返回DateTime.MinValue
         /// </summary>
         /// <param name="str">需要转换的字符串</param>
         /// <param name="dt">转换后结果</param>
