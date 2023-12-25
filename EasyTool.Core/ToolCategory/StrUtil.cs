@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace EasyTool
@@ -55,6 +55,50 @@ namespace EasyTool
         }
 
         /// <summary>
+        /// 检查字符串是否为正整数
+        /// </summary>
+        /// <param name="str">要检查的字符串</param>
+        /// <returns>如果是正整数，则返回true，否则返回false</returns>
+        public static bool IsPositiveInt(string str)
+        {
+            int result;
+            return int.TryParse(str, out result) && result > 0;
+        }
+
+        /// <summary>
+        /// 检查字符串是否为单精度浮点型
+        /// </summary>
+        /// <param name="str">要检查的字符串</param>
+        /// <returns>如果是单精度浮点型，则返回true，否则返回false</returns>
+        public static bool IsFloat(string str)
+        {
+            float result;
+            return float.TryParse(str, out result);
+        }
+
+        /// <summary>
+        /// 检查字符串是否为正单精度浮点型
+        /// </summary>
+        /// <param name="str">要检查的字符串</param>
+        /// <returns>如果是正单精度浮点型，则返回true，否则返回false</returns>
+        public static bool IsPositiveFloat(string str)
+        {
+            float result;
+            return float.TryParse(str, out result) && result > 0f;
+        }
+
+        /// <summary>
+        /// 检查字符串是否为正双精度浮点型
+        /// </summary>
+        /// <param name="str">要检查的字符串</param>
+        /// <returns>如果是正双精度浮点型，则返回true，否则返回false</returns>
+        public static bool IsPositiveDouble(string str)
+        {
+            double result;
+            return double.TryParse(str, out result) && result > 0.0;
+        }
+
+        /// <summary>
         /// 检查字符串是否为日期
         /// </summary>
         /// <param name="str">要检查的字符串</param>
@@ -63,6 +107,56 @@ namespace EasyTool
         {
             DateTime result;
             return DateTime.TryParse(str, out result);
+        }
+
+        /// <summary>
+        /// 字符串转换日期(年月日)，转换失败返回DateTime.MinValue
+        /// </summary>
+        /// <param name="str">需要转换的字符串</param>
+        /// <param name="dt">转换后结果</param>
+        /// <returns>如果字符串转换日期(年月日)成功，则返回true，否则返回false</returns>
+        public static bool TransferDate(string str, out DateTime dt)
+        {
+            // 日期格式
+            List<string> dateFormats = new List<string> { "yyyy-MM-dd", "yyyyMMdd", "yyyy/MM/dd", "d-MMM-yyyy" };
+
+            dt = DateTime.MinValue;
+            int num = 0;
+            bool flag = DateTime.TryParse(str, out dt);
+            if (!flag)
+            {
+                do
+                {
+                    flag = DateTime.TryParseExact(str, dateFormats[num++], CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+                }
+                while (!flag && num < dateFormats.Count);
+            }
+            return flag;
+        }
+
+        /// <summary>
+        /// 验证是否为时间(年月日 时分秒)，转换失败返回DateTime.MinValue
+        /// </summary>
+        /// <param name="str">需要转换的字符串</param>
+        /// <param name="dt">转换后结果</param>
+        /// <returns>如果字符串转换时间(年月日 时分秒)成功，则返回true，否则返回false</returns>
+        public static bool TransferTime(string str, out DateTime dt)
+        {
+            //  时间格式
+            List<string> dateTimeFormats = new List<string> { "yyyy-MM-dd HH:mm:ss", "yyyyMMdd HHmmss", "yyyy/MM/dd HH:mm:ss" };
+
+            dt = DateTime.MinValue;
+            int num = 0;
+            bool flag = DateTime.TryParse(str, out dt);
+            if (!flag)
+            {
+                do
+                {
+                    flag = DateTime.TryParseExact(str, dateTimeFormats[num++], CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+                }
+                while (!flag && num < dateTimeFormats.Count);
+            }
+            return flag;
         }
 
         /// <summary>
